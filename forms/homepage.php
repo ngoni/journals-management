@@ -15,7 +15,6 @@
  	<ul class="nav">
 	<li><a href="options-general.php?page=IGUJournalManager&amp;action=view">View Journals </a></li>
 	<li><a href="options-general.php?page=IGUJournalManager&amp;action=new">Add New Journals </a></li>
-	<li><a href="options-general.php?page=IGUJournalManager&amp;action=upload">Upload File</a></li>	
 	</ul>
           <form id="navform" class="navbar-search pull-right" action="?page=IGUJournalManager&amp;action=search" method="post">
             <input type="text" id="search" name="search" class="search-query span2" placeholder="Search" />

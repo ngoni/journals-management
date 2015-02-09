@@ -1,6 +1,6 @@
 <?php
 
-	require( WP_PLUGIN_DIR . "/IGUJournalManagerdd/forms/homepage.php" );
+	require( WP_PLUGIN_DIR . "/journals-management/forms/homepage.php" );
 	
 	if( $journalList['journals'] === null){;}//row not found nothing to display try and display erro message data not found ??does not make sense
 	else{

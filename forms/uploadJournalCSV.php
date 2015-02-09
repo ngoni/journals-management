@@ -1,5 +1,5 @@
 <?php 
-	require( WP_PLUGIN_DIR . "/IGUJournalManager/forms/homepage.php" );
+	require( WP_PLUGIN_DIR . "/journals-management/forms/homepage.php" );
 
 	$print = 
 	'<div>

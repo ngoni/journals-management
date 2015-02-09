@@ -17,21 +17,21 @@
 		public $impactFactor = null;
 		public $website = null;
 		var $tableName = "wp_igu_journals";
-		
+		public $arrayStruct = array('%s','%s','%s','%s','%s','%s','%s','%s','%s','%d','%d','%s','%f','%s');
 		
 		public function __construct( $data = array() ){
 		
 			if( isset($data) ){	
 				if( isset( $data['id'] ) ) 							$this->id = $data['id'];
 				if( isset( $data['name_of_journal'] ) && 
-					strlen( $data['name_of_journal'] ) !== 0 ) 						$this->name_of_journal = $data['name_of_journal'];
+					strlen( $data['name_of_journal'] ) !== 0 ) 		$this->name_of_journal = $data['name_of_journal'];
 				if( isset( $data['country'] ) ) 					$this->country = $data['country'];
 				if( isset( $data['print_issn'] ) ) 					$this->print_issn = $data['print_issn'];
 				if( isset( $data['e_issn'] ) ) 						$this->e_issn = $data['e_issn'];
 				if( isset( $data['city_of_publication'] ) ) 		$this->city_of_publication = $data['city_of_publication'];
 				if( isset( $data['name_of_publishing_company'] ) ) 	$this->name_of_publishing_company = $data['name_of_publishing_company'];
 				if( isset( $data['editor']) )  						$this->editor = $data['editor'];
-				if( isset( $data['editor_email_address'] ) )					$this->editor_email_address = $data['editor_email_address'];
+				if( isset( $data['editor_email_address'] ) )		$this->editor_email_address = $data['editor_email_address'];
 				if( isset( $data['language'] ) ) 					$this->language = $data['language'];
 				if( isset( $data['since'] ) ) 						$this->since = (int)$data['since'];
 				if( isset( $data['isi'] ) ) 						$this->isi = (int)$data['isi'];
@@ -99,8 +99,9 @@
 		
 		public function insert(){
 			global $wpdb;
-			if( isset( $this->name_of_journal ) )
-				return $wpdb->insert( $this->tableName, $this->generatePairs() );
+			if( isset( $this->name_of_journal ) ){
+				return $wpdb->insert( $this->tableName, $this->generatePairs(), $this->arrayStruct );
+			}
 			else
 				return null;
 		}

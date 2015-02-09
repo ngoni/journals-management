@@ -1,6 +1,6 @@
 <?php 
 
-	require( WP_PLUGIN_DIR . "/IGUJournalManagerdd/forms/homepage.php" ); 
+	require( WP_PLUGIN_DIR . "/journals-management/forms/homepage.php" ); 
 	
 	$toHTML = 
 	'<meta hvaluep-equiv="Content-Type" content="text/html; charset=utf-8" /><div>

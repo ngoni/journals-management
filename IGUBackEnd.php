@@ -5,10 +5,10 @@
 		Version: 1.0
 	*/
 	
-	require_once( WP_PLUGIN_DIR . "/IGUJournalManagerdd/class/journaldd.php" );
-	require_once( WP_PLUGIN_DIR . "/IGUJournalManagerdd/class/pagination.class.php" );
+	require_once( WP_PLUGIN_DIR . "/journals-management/class/journaldd.php" );
+	require_once( WP_PLUGIN_DIR . "/journals-management/class/pagination.class.php" );
 
-	wp_register_style( 'igu_admin_css', WP_PLUGIN_URL . "/IGUJournalManagerdd/css/dbManagerCSS.css", "", ""  );
+	wp_register_style( 'igu_admin_css', WP_PLUGIN_URL . "/journals-management/css/dbManagerCSS.css", "", ""  );
 	wp_enqueue_style( 'igu_admin_css' );
 	
 	function on_admin_menu() {
@@ -50,7 +50,7 @@
 	}
 	
 	function homepage(){
-		require_once( WP_PLUGIN_DIR . "/IGUJournalManagerdd/forms/homepage.php" );
+		require_once( WP_PLUGIN_DIR . "/journals-management/forms/homepage.php" );
 	}
 	
 	function newJournal(){
@@ -69,13 +69,13 @@
 			else{
 				$journalList["journals"] = new journaldd();
 				$journalList['columnHeadings'] = journaldd::getColumnHeadings();
-				require_once( WP_PLUGIN_DIR . "/IGUJournalManagerdd/forms/newJournal.php" );
+				require_once( WP_PLUGIN_DIR . "/journals-management/forms/newJournal.php" );
 			}
 		}else{
 	
 			$journalList["journals"] = new journaldd();
 			$journalList['columnHeadings'] = journaldd::getColumnHeadings();
-			require_once( WP_PLUGIN_DIR . "/IGUJournalManagerdd/forms/newJournal.php" );
+			require_once( WP_PLUGIN_DIR . "/journals-management/forms/newJournal.php" );
 		}
 	}
 	
@@ -105,12 +105,12 @@
 				//viewJournal();error
 				$journalList['journals'] = journaldd::viewCustom( 'id', $_POST['id'],null,null );
 				$journalList['columnHeadings'] = journaldd::getColumnHeadings();
-				require( WP_PLUGIN_DIR . "/IGUJournalManagerdd/forms/editJournal.php" );
+				require( WP_PLUGIN_DIR . "/journals-management/forms/editJournal.php" );
 			}
 		}else{
 			$journalList['journals'] = journaldd::viewCustom( 'id', $_GET['journal'],null,null );
 			$journalList['columnHeadings'] = journaldd::getColumnHeadings();
-			require( WP_PLUGIN_DIR . "/IGUJournalManagerdd/forms/editJournal.php" );
+			require( WP_PLUGIN_DIR . "/journals-management/forms/editJournal.php" );
 		}
 	}
 	
@@ -119,11 +119,11 @@
 		$journalList = array();
 		$journalList['pageTitle'] = "View Journals";
 		$journalList['formAction'] = "view";
-		$paginator = new Paginator( 10 );
-		$journalList['journals'] = journaldd::viewAll( $paginator->findStart(), 10 );
+		$paginator = new Paginator( 20 );
+		$journalList['journals'] = journaldd::viewAll( $paginator->findStart(), 20 );
 		$journalList['columnHeadings'] = journaldd::getColumnHeadings();
 		$paginator->findPages( journaldd::calcFoundRows() );
-		require( WP_PLUGIN_DIR . "/IGUJournalManagerdd/forms/viewAllJournals.php" );
+		require( WP_PLUGIN_DIR . "/journals-management/forms/viewAllJournals.php" );
 	}
 	
 	function deleteJournal(){
@@ -151,7 +151,7 @@
 				$journalList['journals'] = journaldd::viewCustom( $_POST['filter'], "%".$_POST['search']."%", $paginator->findStart(), 10 );//$_POST['search'], $_POST['filter'] );
 				$paginator->findPages( journaldd::calcFoundRows() );
 				$journalList['columnHeadings'] = journaldd::getColumnHeadings();
-				require( WP_PLUGIN_DIR . "/IGUJournalManagerdd/forms/viewAllJournals.php" );
+				require( WP_PLUGIN_DIR . "/journals-management/forms/viewAllJournals.php" );
 			}
 		}/*else{
 			$journalList['search'] = "canada";
@@ -161,7 +161,7 @@
 			$journalList['journals'] = journaldd::viewCustom( $journalList['filter'], "%".$journalList['search']."%", $paginator->findStart(), 10 );//$_POST['search'], $_POST['filter'] );
 			$paginator->findPages( journaldd::calcFoundRows() );
 			$journalList['columnHeadings'] = journaldd::getColumnHeadings();
-			require( WP_PLUGIN_DIR . "/IGUJournalManagerdd/forms/viewAllJournals.php" );
+			require( WP_PLUGIN_DIR . "/journals-management/forms/viewAllJournals.php" );
 		}*/
 	}
 	
@@ -187,8 +187,8 @@
 					if( isset( $error ) )
 						;//print success with errors
 				}
-			}else require( WP_PLUGIN_DIR . "/IGUJournalManagerdd/forms/uploadJournal.php" );
+			}else require( WP_PLUGIN_DIR . "/journals-management/forms/uploadJournal.php" );
 		}else
-			require( WP_PLUGIN_DIR . "/IGUJournalManagerdd/forms/uploadJournal.php" );
+			require( WP_PLUGIN_DIR . "/journals-management/forms/uploadJournal.php" );
 	}
 ?>
